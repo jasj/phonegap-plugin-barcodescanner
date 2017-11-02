@@ -1200,5 +1200,4 @@ parentViewController:(UIViewController*)parentViewController
     previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [UIView setAnimationsEnabled:YES];
 }
-
 @end
