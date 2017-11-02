@@ -577,7 +577,7 @@ parentViewController:(UIViewController*)parentViewController
             NSMutableString *teststring = [[NSMutableString alloc]init];
             for (int i = 0 ; i < totalData; i ++)
             {
-                [teststring appendString:[NSString stringWithFormat:@"%d",bytePtr[i]]]; 
+                [teststring appendString:[NSString stringWithFormat:@"%d ",bytePtr[i]]]; 
             }
             
             
