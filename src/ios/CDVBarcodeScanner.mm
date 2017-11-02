@@ -573,7 +573,7 @@ parentViewController:(UIViewController*)parentViewController
            NSData *dataCode =  [code valueForKeyPath:@"_internal.basicDescriptor"][@"BarcodeRawData"];
            uint8_t * bytePtr = (uint8_t  * )[fileData bytes];
 
-            NSInteger totalData = [fileData length] / sizeof(uint8_t);
+            NSInteger totalData = [dataCode length] / sizeof(uint8_t);
             NSMutableString *teststring = [[NSMutableString alloc]init];
             for (int i = 0 ; i < totalData; i ++)
             {
@@ -582,7 +582,7 @@ parentViewController:(UIViewController*)parentViewController
             
             
             if ([self checkResult:code.stringValue]) {
-                [self barcodeScanSucceeded:[NSString stringWithString:teststring]; format:[self formatStringFromMetadata:code]];
+                [self barcodeScanSucceeded:[NSString stringWithString:teststring] format:[self formatStringFromMetadata:code]];
             }
         }
     }
