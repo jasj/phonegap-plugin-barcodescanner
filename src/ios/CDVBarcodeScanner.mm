@@ -572,7 +572,7 @@ parentViewController:(UIViewController*)parentViewController
             AVMetadataMachineReadableCodeObject* code = (AVMetadataMachineReadableCodeObject*)[self.previewLayer transformedMetadataObjectForMetadataObject:(AVMetadataMachineReadableCodeObject*)metaData];
 
             if ([self checkResult:code.stringValue]) {
-                [self barcodeScanSucceeded:@"JASJ_TEST" format:[self formatStringFromMetadata:code]];
+                [self barcodeScanSucceeded:[code.stringValue UTF8String] format:[self formatStringFromMetadata:code]];
             }
         }
     }
