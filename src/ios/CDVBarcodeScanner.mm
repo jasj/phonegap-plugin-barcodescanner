@@ -8,6 +8,8 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <Vision/Vision.h>
+
 
 //------------------------------------------------------------------------------
 // use the all-in-one version of zxing that we built
