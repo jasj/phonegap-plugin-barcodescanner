@@ -571,7 +571,7 @@ parentViewController:(UIViewController*)parentViewController
         // This will bring in multiple entities if there are multiple 2D codes in frame.
         for (AVMetadataObject *metaData in metadataObjects) {
             AVMetadataMachineReadableCodeObject* code = (AVMetadataMachineReadableCodeObject*)[self.previewLayer transformedMetadataObjectForMetadataObject:(AVMetadataMachineReadableCodeObject*)metaData];
-           NSData *data =  [code valueForKeyPath:@"_internal.basicDescriptor"][@"BarcodeRawData"];
+           NSData *dataCode =  [code valueForKeyPath:@"_internal.basicDescriptor"][@"BarcodeRawData"];
         //   NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
             uint8_t * bytePtr = (uint8_t  * )[dataCode bytes];
