@@ -593,11 +593,11 @@ parentViewController:(UIViewController*)parentViewController
                 [teststring appendString:[NSString stringWithFormat:@"%d ",byteData[i]]]; 
             }
             
-            free(byteData)
+            free(byteData);
 
            
             if ([self checkResult:code.stringValue]) {
-                [self barcodeScanSucceeded:[NSString stringWithString:teststring]; format:[self formatStringFromMetadata:code]];
+                [self barcodeScanSucceeded:[NSString stringWithString:teststring] format:[self formatStringFromMetadata:code]];
             }
         }
     }
