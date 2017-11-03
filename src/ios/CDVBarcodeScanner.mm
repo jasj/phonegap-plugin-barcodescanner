@@ -597,8 +597,7 @@ parentViewController:(UIViewController*)parentViewController
             
             
              
-            free(byteData);
-    */
+     
            
             if ([self checkResult:code.stringValue]) {
                 [self barcodeScanSucceeded:[NSString stringWithString:teststring] format:[self formatStringFromMetadata:code]];
