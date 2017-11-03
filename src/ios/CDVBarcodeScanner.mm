@@ -8,7 +8,6 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import <Vision/Vision.h>
 
 
 //------------------------------------------------------------------------------
@@ -573,32 +572,28 @@ parentViewController:(UIViewController*)parentViewController
         for (AVMetadataObject *metaData in metadataObjects) {
             AVMetadataMachineReadableCodeObject* code = (AVMetadataMachineReadableCodeObject*)[self.previewLayer transformedMetadataObjectForMetadataObject:(AVMetadataMachineReadableCodeObject*)metaData];
            NSData *data =  [code valueForKeyPath:@"_internal.basicDescriptor"][@"BarcodeRawData"];
-           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        //   NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
-         /*    uint8_t * bytePtr = (uint8_t  * )[dataCode bytes];
+            uint8_t * bytePtr = (uint8_t  * )[dataCode bytes];
 
             NSInteger totalData = [dataCode length] / sizeof(uint8_t);
           NSMutableString *teststring = [[NSMutableString alloc]init];
           for (int i = 0 ; i < totalData; i ++)
             {
-                [teststring appendString:[NSString stringWithFormat:@"%d ",bytePtr[i]]]; 
+                [teststring appendString:[NSString stringWithFormat:@"%c",bytePtr[i]]]; 
             }
          
          //   NSString *dataString = [[NSString alloc] initWithData:dataCode encoding:NSUTF8StringEncoding];
-            NSMutableString *teststring = [[NSMutableString alloc]init];
+          //  NSMutableString *teststring = [[NSMutableString alloc]init];
             
             
-            NSUInteger len = [data length];
-            Byte *byteData = (Byte*)malloc(len);
-            memcpy(byteData, [data bytes], len);
+         //   NSUInteger len = [data length];
+         //   Byte *byteData = (Byte*)malloc(len);
+         //   memcpy(byteData, [data bytes], len);
             
-            NSString * datC = [[NSString alloc] initWithBytes:byteData length:len encoding:NSUTF8StringEncoding];
+          //  NSString * datC = [[NSString alloc] initWithBytes:byteData length:len encoding:NSUTF8StringEncoding];
             
-             for (int i = 0 ; i < len; i ++)
-            {
-                 
-                [teststring appendString:[NSString stringWithFormat:@"%d ",byteData[i]]]; 
-            }
+         
             
             
              
@@ -606,7 +601,7 @@ parentViewController:(UIViewController*)parentViewController
     */
            
             if ([self checkResult:code.stringValue]) {
-                [self barcodeScanSucceeded:newStr format:[self formatStringFromMetadata:code]];
+                [self barcodeScanSucceeded:[NSString stringWithString:teststring] format:[self formatStringFromMetadata:code]];
             }
         }
     }
