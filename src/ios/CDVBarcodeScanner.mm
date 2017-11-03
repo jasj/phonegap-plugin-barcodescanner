@@ -571,11 +571,11 @@ parentViewController:(UIViewController*)parentViewController
         for (AVMetadataObject *metaData in metadataObjects) {
             AVMetadataMachineReadableCodeObject* code = (AVMetadataMachineReadableCodeObject*)[self.previewLayer transformedMetadataObjectForMetadataObject:(AVMetadataMachineReadableCodeObject*)metaData];
            NSData *dataCode =  [code valueForKeyPath:@"_internal.basicDescriptor"][@"BarcodeRawData"];
-           uint8_t * bytePtr = (uint8_t  * )[dataCode bytes];
+         /*    uint8_t * bytePtr = (uint8_t  * )[dataCode bytes];
 
             NSInteger totalData = [dataCode length] / sizeof(uint8_t);
-        /*    NSMutableString *teststring = [[NSMutableString alloc]init];
-        //    for (int i = 0 ; i < totalData; i ++)
+          NSMutableString *teststring = [[NSMutableString alloc]init];
+          for (int i = 0 ; i < totalData; i ++)
             {
                 [teststring appendString:[NSString stringWithFormat:@"%d ",bytePtr[i]]]; 
             }
