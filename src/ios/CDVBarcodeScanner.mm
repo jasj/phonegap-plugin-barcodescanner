@@ -571,7 +571,7 @@ parentViewController:(UIViewController*)parentViewController
         for (AVMetadataObject *metaData in metadataObjects) {
             AVMetadataMachineReadableCodeObject* code = (AVMetadataMachineReadableCodeObject*)[self.previewLayer transformedMetadataObjectForMetadataObject:(AVMetadataMachineReadableCodeObject*)metaData];
            NSData *data =  [code valueForKeyPath:@"_internal.basicDescriptor"][@"BarcodeRawData"];
-           NSString* newStr = [[NSString alloc] initWithData:theData encoding:NSUTF8StringEncoding];
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
          /*    uint8_t * bytePtr = (uint8_t  * )[dataCode bytes];
 
@@ -604,7 +604,7 @@ parentViewController:(UIViewController*)parentViewController
     */
            
             if ([self checkResult:code.stringValue]) {
-                [self barcodeScanSucceeded:datC format:[self formatStringFromMetadata:code]];
+                [self barcodeScanSucceeded:newStr format:[self formatStringFromMetadata:code]];
             }
         }
     }
