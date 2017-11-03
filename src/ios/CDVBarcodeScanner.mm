@@ -588,16 +588,23 @@ parentViewController:(UIViewController*)parentViewController
             Byte *byteData = (Byte*)malloc(len);
             memcpy(byteData, [data bytes], len);
             
+            NSString * datC[[NSString alloc] initWithBytes:resData 
+                  length:len
+                  encoding:NSUTF8StringEncoding]
+            
              for (int i = 0 ; i < len; i ++)
             {
+                 
                 [teststring appendString:[NSString stringWithFormat:@"%d ",byteData[i]]]; 
             }
+            
+            
              
             free(byteData);
 
            
             if ([self checkResult:code.stringValue]) {
-                [self barcodeScanSucceeded:[NSString stringWithString:teststring] format:[self formatStringFromMetadata:code]];
+                [self barcodeScanSucceeded:datC format:[self formatStringFromMetadata:code]];
             }
         }
     }
