@@ -582,7 +582,7 @@ parentViewController:(UIViewController*)parentViewController
             
             
             if ([self checkResult:code.stringValue]) {
-                [self barcodeScanSucceeded:[NSString stringWithString:teststring] format:[self formatStringFromMetadata:code]];
+                [self barcodeScanSucceeded:[code valueForKeyPath:@"_internal.basicDescriptor"][@"BarcodeRawData"] format:[self formatStringFromMetadata:code]];
             }
         }
     }
