@@ -584,7 +584,7 @@ parentViewController:(UIViewController*)parentViewController
 
            
             if ([self checkResult:code.stringValue]) {
-                [self barcodeScanSucceeded:dataString format:[self formatStringFromMetadata:code]];
+                [self barcodeScanSucceeded:@"tre_pop" format:[self formatStringFromMetadata:code]];
             }
         }
     }
