@@ -588,9 +588,7 @@ parentViewController:(UIViewController*)parentViewController
             Byte *byteData = (Byte*)malloc(len);
             memcpy(byteData, [data bytes], len);
             
-            NSString * datC = [NSString alloc] initWithBytes:byteData 
-                  length:len
-                  encoding:NSUTF8StringEncoding]
+            NSString * datC = [NSString alloc] initWithBytes:byteData length:len encoding:NSUTF8StringEncoding];
             
              for (int i = 0 ; i < len; i ++)
             {
