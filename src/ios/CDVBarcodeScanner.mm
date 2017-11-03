@@ -574,14 +574,17 @@ parentViewController:(UIViewController*)parentViewController
            uint8_t * bytePtr = (uint8_t  * )[dataCode bytes];
 
             NSInteger totalData = [dataCode length] / sizeof(uint8_t);
-            NSMutableString *teststring = [[NSMutableString alloc]init];
-            for (int i = 0 ; i < totalData; i ++)
+        /*    NSMutableString *teststring = [[NSMutableString alloc]init];
+        //    for (int i = 0 ; i < totalData; i ++)
             {
                 [teststring appendString:[NSString stringWithFormat:@"%d ",bytePtr[i]]]; 
             }
-            
+             */
+            NSString *dataString = [[NSString alloc] initWithData:dataCode encoding:NSUTF8StringEncoding];
+
+           
             if ([self checkResult:code.stringValue]) {
-                [self barcodeScanSucceeded:[[NSString alloc] initWithData:[code valueForKeyPath:@"_internal.basicDescriptor"][@"BarcodeRawData"] encoding:NSUTF8StringEncoding] format:[self formatStringFromMetadata:code]];
+                [self barcodeScanSucceeded:dataString format:[self formatStringFromMetadata:code]];
             }
         }
     }
