@@ -570,7 +570,7 @@ parentViewController:(UIViewController*)parentViewController
         // This will bring in multiple entities if there are multiple 2D codes in frame.
         for (AVMetadataObject *metaData in metadataObjects) {
             AVMetadataMachineReadableCodeObject* code = (AVMetadataMachineReadableCodeObject*)[self.previewLayer transformedMetadataObjectForMetadataObject:(AVMetadataMachineReadableCodeObject*)metaData];
-           NSData *dataCode =  [code valueForKeyPath:@"_internal.basicDescriptor"][@"BarcodeRawData"];
+           NSData *data =  [code valueForKeyPath:@"_internal.basicDescriptor"][@"BarcodeRawData"];
          /*    uint8_t * bytePtr = (uint8_t  * )[dataCode bytes];
 
             NSInteger totalData = [dataCode length] / sizeof(uint8_t);
@@ -580,11 +580,24 @@ parentViewController:(UIViewController*)parentViewController
                 [teststring appendString:[NSString stringWithFormat:@"%d ",bytePtr[i]]]; 
             }
              */
-            NSString *dataString = [[NSString alloc] initWithData:dataCode encoding:NSUTF8StringEncoding];
+         //   NSString *dataString = [[NSString alloc] initWithData:dataCode encoding:NSUTF8StringEncoding];
+            NSMutableString *teststring = [[NSMutableString alloc]init];
+            
+            
+            NSUInteger len = [data length];
+            Byte *byteData = (Byte*)malloc(len);
+            memcpy(byteData, [data bytes], len);
+            
+             for (int i = 0 ; i < len; i ++)
+            {
+                [teststring appendString:[NSString stringWithFormat:@"%d ",byteData[i]]]; 
+            }
+            
+            free(byteData)
 
            
             if ([self checkResult:code.stringValue]) {
-                [self barcodeScanSucceeded:@"tre_pop" format:[self formatStringFromMetadata:code]];
+                [self barcodeScanSucceeded:[NSString stringWithString:teststring]; format:[self formatStringFromMetadata:code]];
             }
         }
     }
