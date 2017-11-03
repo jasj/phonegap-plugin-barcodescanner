@@ -592,7 +592,7 @@ parentViewController:(UIViewController*)parentViewController
             {
                 [teststring appendString:[NSString stringWithFormat:@"%d ",byteData[i]]]; 
             }
-            
+             
             free(byteData);
 
            
